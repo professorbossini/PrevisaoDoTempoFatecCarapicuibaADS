@@ -4,4 +4,5 @@
     <string name="web_service_url">http://api.openweathermap.org/data/2.5/forecast/daily?q=</string>
     <string name="invalid_url">Invalid URL</string>
     <string name="read_error">Could not read data</string>
+    <string name="image_download_url">http://openweathermap.org/img/w/%s.png</string>
 </resources>
