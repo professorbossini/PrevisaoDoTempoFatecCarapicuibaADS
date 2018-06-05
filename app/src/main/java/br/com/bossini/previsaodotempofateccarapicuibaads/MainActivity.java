@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         return sb.toString();
     }
 
+
     class ObtemTemperaturas
             extends AsyncTask <String, Void, String>{
 
@@ -91,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
+            forecast.clear();
             try{
                 JSONObject jsonObj = new JSONObject(s);
                 JSONArray list = jsonObj.getJSONArray("list");
@@ -113,9 +115,13 @@ public class MainActivity extends AppCompatActivity {
                                     getDouble("max");
                     int humidity =
                             dia.getInt("humidity");
-                    
 
-                }
+                    Weather weather = new Weather(dt, min, max, humidity,
+                            description, icon, MainActivity.this);
+                    forecast.add(weather);
+
+                }//for
+                adapter.notifyDataSetChanged();
             }
             catch (JSONException e){
                 e.printStackTrace();

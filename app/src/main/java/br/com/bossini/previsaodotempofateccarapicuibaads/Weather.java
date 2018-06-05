@@ -19,6 +19,7 @@ public class Weather {
     public final String description;
     public final String iconURL;
     public final Context context;
+    public final String nomeFigura;
 
     public Weather (long timeStamp, double minTemp, double maxTemp, double humidity,
                     String description, String iconName, Context context){
@@ -28,10 +29,11 @@ public class Weather {
         numberFormat.setMaximumFractionDigits(0);
         dayOfWeek = convertTimeStampToDay (timeStamp);
         this.minTemp = numberFormat.format(minTemp) + "\u06AAC";
-        this.maxTemp = numberFormat.format(maxTemp + "\u00B0C");
+        this.maxTemp = numberFormat.format(maxTemp) + "\u00B0C";
         this.humidity = NumberFormat.getPercentInstance().format(humidity / 100);
         this.description = description;
         this.iconURL = context.getString (R.string.image_download_url, iconName);
+        this.nomeFigura = iconName;
     }
 
     public String convertTimeStampToDay (long timeStamp){
